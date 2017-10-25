@@ -2,10 +2,10 @@
 
 <head>
     <title>Temperature &amp; Humidity live data</title>
-    <meta charset="utf-8"/>
     <script src="javascripts/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="javascripts/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.2/justgage.min.js"></script>
     <link href="stylesheets/style.css" rel="stylesheet" />
     <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js"></script>
  <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase-auth.js"></script>
@@ -29,17 +29,146 @@
     #g5, #g6, #g7 {
         margin-top: -10px;
     }
+.gauge2 {
+        width: 150px;
+        height: 150px;
+    }
+	#gauges{
+	margin-top:2px;
+        float:left;
+    }
+
+	.container2 {
+        width: 150px;
+        margin: 0 auto;
+        text-align: center;
+    }
+	.container {
+        width: 180px;
+        margin: 0 auto;
+	/*background-color:#F2F2F2;*/
+    }
+    .nam{
+      /*  border-radius: 40px;
+        background-color:#0054FF;
+        color: white;
+        font-size: 13px;
+        width:150px;*/
+        text-align:center;
+        line-height: 25px;
+		font-family:"맑은고딕";
+		margin-top:60px;
+		font-weight:bold;
+		font-size:17px;
+		color:#555555;
+		
+    }
+	.nam2{
+      /*  border-radius: 40px;
+        background-color:#0054FF;
+        color: white;
+        font-size: 13px;
+        width:150px;*/
+        text-align:center;
+        line-height: 10px;       
+    }
+	.pm1{
+		font-family:"HY강M";
+		margin-top:-3px;	
+	}
 </style>
     
 </head>
 
 <body>
 
-    <canvas id="myChart" width="400" height="150"></canvas>
+<script src="../raphael-2.1.4.min.js"></script>
+    <script src="../justgage.js"></script>
+
+    
+
+	<script>
+    var g1;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g1 = new JustGage({
+            id: "g1",
+            value: 72,
+            min: 0,
+            max: 100,
+            donut: true,
+            gaugeWidthScale: 0.3,
+            counter: true,
+            hideInnerShadow: true
+        });
+   //     document.getElementById('g1_refresh').addEventListener('click', function() {
+   //         g1.refresh(getRandomInt(0, 100));
+   //     });
+   setInterval(myMethod, 1000);
+   function myMethod()
+	{
+		var aa = document.getElementById("ytd").innerHTML;
+		g1.refresh(parseInt(aa));
+	
+	}
+    });
+    </script>
+
+	<script>
+    var g2;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g2 = new JustGage({
+            id: "g2",
+            value: 72,
+            min: 0,
+            max: 100,
+            donut: true,
+            gaugeWidthScale: 0.3,
+            counter: true,
+            hideInnerShadow: true
+        });
+   //     document.getElementById('g1_refresh').addEventListener('click', function() {
+   //         g1.refresh(getRandomInt(0, 100));
+   //     });
+   setInterval(myMethod2, 1000);
+   function myMethod2( )
+	{
+		var aaa = document.getElementById("today").innerHTML;
+		g2.refresh(parseInt(aaa));
+	}
+    });
+    </script>
+<table id="gauges" width=1692 height=0 >
+<tr>
+<td rowspan = "2">
+<canvas id="myChart" width="400" height="150"></canvas>
+</td>
+	   <td>
+		   <div class="nam">평균 모션 감지 빈도</div>  
+	   <div class="container2">
+        <div id="g1" class="gauge2"></div>
+		   <p id="pm25dis" class="pm1">79</p>
+		  
+    </div>
+    </td>
+	</tr>
+	<tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      `
+	<td>
+		<div class="nam">오늘 모션 감지 빈도</div>
+       <div class="container2">
+        <div id="g2" class="gauge2"></div>
+	       <p id="pm10dis" class="pm1">낮음</p>
+    </div>
+        </td>      
+	</tr>
+      
+        
+    </table>
 	<!--------------------------------------->
 <!------------------------------------------------------------------------>
 <br><br><br>
-	<p id="motion"></p>
+	<p id="motion" hidden></p>
+	<p id="ytd" hidden>sdfdasfasdf</p>
+	<p id="today" hidden></p>
 </body>
 
 </html>
