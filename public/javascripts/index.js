@@ -22,6 +22,8 @@ $(document).ready(function () {
   var rpmlength = rpmData.length;
    
    document.getElementById("motion").innerHTML = "0"
+   document.getElementById("ytd").innerHTML = "79"
+   document.getElementById("today").innerHTML = "20"
 	
   //---------yanji end 1/2------------
   //temperatureData[0] = 0;
@@ -31,7 +33,7 @@ $(document).ready(function () {
     datasets: [
       {
         fill: false,
-        label: 'Val',
+        label: 'Motion Detect',
         yAxisID: 'Temperature',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
@@ -113,6 +115,23 @@ $(document).ready(function () {
 		}
 	  if(obj.params.motion == 1)
 	  {
+		  var mot = 0;
+		  mot = document.getElementById("today").innerHTML;
+		  mot = mot + 1;
+		  document.getElemenyById("today").innerHTML = mot;
+		  if(mot<40)
+		  {
+			document.getElementById("pm10dis").innerHTML = "낮음";
+		  }
+		  else if(mot<80)
+		  {
+			document.getElementById("pm10dis").innerHTML = "보통";
+		  }
+		  else
+		  {
+			document.getElementById("pm10dis").innerHTML = "높음";
+		  }
+		  
 		timeData.push(timeS);
 		temperatureData.push(obj.params.motion);
 	  }
