@@ -121,8 +121,8 @@ $(document).ready(function () {
 		  summ = summ + 1;
 		  var mot = 0;
 		  mot = document.getElementById("today").innerHTML;
-		  mot = mot + 1;
-		  document.getElementById("today").innerHTML = mot;
+		  mot = parseInt(mot) + 1;
+		  document.getElementById("today").inne rHTML = mot;
 		  if(mot<40)
 		  {
 			document.getElementById("pm10dis").innerHTML = "낮음";
@@ -135,9 +135,6 @@ $(document).ready(function () {
 		  {
 			document.getElementById("pm10dis").innerHTML = "높음";
 		  }
-		
-		timeData.push(timeS);
-		temperatureData.push(obj.params.motion);
 	  }
 
 	  cou = cou + 1;
@@ -145,8 +142,11 @@ $(document).ready(function () {
 		if(cou == 5)
 		{
 			cou = 0;
-			timeData.push(timeS);
-			temperatureData.push(summ);
+			if(sum!=0)
+			{
+				timeData.push(timeS);
+				temperatureData.push(summ);
+			}
 			summ = 0;
 		}
 
