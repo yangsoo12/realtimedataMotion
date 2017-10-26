@@ -20,6 +20,9 @@ $(document).ready(function () {
 	
   var rpmData = [];
   var rpmlength = rpmData.length;
+
+  var cou=0;
+  var summ=0;
    
    document.getElementById("motion").innerHTML = "0"
    document.getElementById("ytd").innerHTML = "79"
@@ -89,7 +92,7 @@ $(document).ready(function () {
     console.log('receive message' + message.data);
     try {
       var obj = JSON.parse(message.data);
-      if(!obj.time || !obj.params.Temperature) {
+      if(!obj.time || !obj.params.pm10) {
         return;
       }
 	  
@@ -115,9 +118,10 @@ $(document).ready(function () {
 		}
 	  if(obj.params.motion == 1)
 	  {
+		  summ = summ + 1;
 		  var mot = 0;
-		  mot = parseInt(document.getElementById("today").innerHTML);
-		  mot = mot + obj.params.motion;
+		  mot = document.getElementById("today").innerHTML;
+		  mot = mot + 1;
 		  document.getElementById("today").innerHTML = mot;
 		  if(mot<40)
 		  {
@@ -131,10 +135,22 @@ $(document).ready(function () {
 		  {
 			document.getElementById("pm10dis").innerHTML = "높음";
 		  }
-		  
+		
 		timeData.push(timeS);
 		temperatureData.push(obj.params.motion);
 	  }
+
+	  cou = cou + 1;
+		
+		if(cou == 5)
+		{
+			cou = 0;
+			timeData.push(timeS);
+			temperatureData.push(summ);
+			summ = 0;
+		}
+
+		
       // only keep no more than 50 points in the line chart
       const maxLen = 10;
       var len = timeData.length;
