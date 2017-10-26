@@ -142,7 +142,7 @@ $(document).ready(function () {
 		if(cou == 5)
 		{
 			cou = 0;
-			if(sum!=0)
+			if(summ!=0)
 			{
 				timeData.push(timeS);
 				temperatureData.push(summ);
