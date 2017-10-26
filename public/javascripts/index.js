@@ -122,7 +122,7 @@ $(document).ready(function () {
 		  var mot = 0;
 		  mot = document.getElementById("today").innerHTML;
 		  mot = parseInt(mot) + 1;
-		  document.getElementById("today").inne rHTML = mot;
+		  document.getElementById("today").innerHTML = mot;
 		  if(mot<40)
 		  {
 			document.getElementById("pm10dis").innerHTML = "낮음";
