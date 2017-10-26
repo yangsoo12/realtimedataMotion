@@ -115,7 +115,8 @@ $(document).ready(function () {
 		}
 	  if(obj.params.motion == 1)
 	  {
-		  var mot = 20;
+		  var mot = 0;
+		  mot = parseInt(document.getElementById("today").innerHTML);
 		  mot = mot + obj.params.motion;
 		  document.getElementById("today").innerHTML = mot;
 		  if(mot<40)
