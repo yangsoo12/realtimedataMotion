@@ -115,10 +115,11 @@ $(document).ready(function () {
 		}
 	  if(obj.params.motion == 1)
 	  {
-		  var mot = 0;
+		  var mot;
 		  mot = document.getElementById("today").innerHTML;
 		  mot = mot + 1;
-		  document.getElementById("today").innerHTML = mot;
+		  var mottt = parseInt(mottt) + 1;
+		  document.getElementById("today").innerHTML = mottt;
 		  if(mot<40)
 		  {
 			document.getElementById("pm10dis").innerHTML = "낮음";
