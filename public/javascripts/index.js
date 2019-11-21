@@ -116,7 +116,7 @@ $(document).ready(function () {
 		{
 			timeS = vv.toString() + subS;
 		}
-	  if(obj.params.motion == 1)
+	  if(obj.params.move == 1)
 	  {
 		  summ = summ + 1;
 		  var mot = 0;
