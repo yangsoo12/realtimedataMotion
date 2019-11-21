@@ -96,7 +96,7 @@ $(document).ready(function () {
         return;
       }
 	  
-	  document.getElementById("motion").innerHTML = obj.params.motion;
+	  document.getElementById("motion").innerHTML = obj.params.move;
 	  var time = obj.time;
 	  var subS = time.substring(13,19);
 	  var hourS = time.substring(11,13);
