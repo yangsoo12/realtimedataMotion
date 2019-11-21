@@ -23,6 +23,7 @@ $(document).ready(function () {
 
   var cou=0;
   var summ=0;
+  var movedata = 1;
    
    document.getElementById("motion").innerHTML = "0"
    document.getElementById("ytd").innerHTML = "79"
@@ -145,7 +146,7 @@ $(document).ready(function () {
 			if(summ!=0)
 			{
 				timeData.push(timeS);
-				temperatureData.push(summ);
+				temperatureData.push(movedata);
 			}
 			summ = 0;
 		}
